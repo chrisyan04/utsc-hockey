@@ -4,7 +4,7 @@ import About from '@/components/about';
 export default function Home() {
   return (
     <main className='flex flex-col'>
-      <Intro />
+      <About />
     </main>
   );
 }

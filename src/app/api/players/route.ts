@@ -26,7 +26,7 @@ let submission = {
 
 export async function POST(request: NextRequest) {
   try {
-    // connectDB();
+    connectDB();
 
     submission = await request.json();
 
@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   try {
-    // connectDB();
+    connectDB();
 
     const players = await Player.find({});
 

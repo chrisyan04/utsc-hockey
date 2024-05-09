@@ -94,7 +94,7 @@ export default function Admin() {
                 disabled={isLoading}
               >
                 {isLoading ? (
-                  <Spinner color="default" className="dark:invert" />
+                  <Spinner color="default" className="invert" />
                 ) : (
                   "Submit"
                 )}

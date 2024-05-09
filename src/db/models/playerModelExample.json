@@ -1,0 +1,20 @@
+{
+  "name": "Chris Yan",
+  "number": 17,
+  "position": "F",
+  "hometown": "Oakville, ON",
+  "height": "178 cm",
+  "weight": "180 lbs",
+  "shoots": "R",
+  "dob": "15/06/2004",
+  "stats": [
+    {
+      "year": 2024,
+      "points": 7,
+      "goals": 3,
+      "assists": 4,
+      "pim": 0,
+      "gamesPlayed": 11
+    }
+  ]
+}

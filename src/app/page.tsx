@@ -3,7 +3,7 @@
 import * as React from "react";
 import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import Landing from "@/components/Landing";
+import Landing from "@/components/Main/Landing";
 import Navbar from "@/components/Navbar";
 
 export default function Home() {

@@ -36,11 +36,11 @@ export default function Navbar() {
   ];
 
   return (
-    <div className="w-screen py-2">
+    <div className="py-2">
       <NextUiNavbar
         isMenuOpen={isMenuOpen}
         onMenuOpenChange={setIsMenuOpen}
-        className=""
+        className="max-sm:-mx-5"
       >
         <NavbarContent justify="start">
           <NavbarMenuToggle
@@ -55,16 +55,16 @@ export default function Navbar() {
                 alt="logo"
                 height={50}
                 width={50}
-                className="rounded-lg"
+                className="rounded-lg max-sm:hidden"
               />
             </Link>
           </NavbarBrand>
         </NavbarContent>
         <NavbarContent justify="center">
-          <NavbarItem className="sm:hidden">
+          <NavbarItem className="max-sm:hidden md:hidden sm:hidden">
             <DarkModeToggle />
           </NavbarItem>
-          <NavbarItem className="sm:hidden">
+          <NavbarItem className="max-sm:hidden md:hidden sm:hidden">
             <Link href="https://www.chrisyan.ca/" target="_blank">
               <Image
                 src={xIcon}
@@ -75,7 +75,7 @@ export default function Navbar() {
               />
             </Link>
           </NavbarItem>
-          <NavbarItem className="sm:hidden">
+          <NavbarItem className="max-sm:hidden md:hidden sm:hidden">
             <Link href="https://www.chrisyan.ca/" target="_blank">
               <Image
                 src={instaIcon}
@@ -86,7 +86,7 @@ export default function Navbar() {
               />
             </Link>
           </NavbarItem>
-          <NavbarItem className="sm:hidden">
+          <NavbarItem className="max-sm:hidden md:hidden sm:hidden">
             <Link href="https://www.chrisyan.ca/" target="_blank">
               <Image
                 src={fbIcon}
@@ -178,11 +178,11 @@ export default function Navbar() {
             </Link>
           </NavbarItem>
         </NavbarContent>
-        <NavbarContent>
+        <NavbarContent justify="end" className="-mr-10">
           <NavbarItem className="">
             <Link href="/contact">
-              <Button className="bg-[#640d14] dark:bg-[#a24857] text-white">
-                {"Join Us"}
+              <Button className="bg-[#640d14] dark:bg-[#a24857] text-white text-sm">
+                {"Join Us!"}
               </Button>
             </Link>
           </NavbarItem>
@@ -195,6 +195,7 @@ export default function Navbar() {
               </Link>
             </NavbarMenuItem>
           ))}
+          <DarkModeToggle />
         </NavbarMenu>
       </NextUiNavbar>
     </div>

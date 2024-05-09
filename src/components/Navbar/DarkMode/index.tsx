@@ -26,7 +26,7 @@ export default function DarkModeToggle() {
   return (
     <Switch
       isSelected={isSelected}
-      size="md"
+      size="sm"
       color="default"
       className="dark"
       thumbIcon={({ isSelected, className }) =>

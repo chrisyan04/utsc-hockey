@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="lg:mx-24 md:mx-12 sm:mx-8 max-sm:mx-4">
       <body className={bitter.className}>{children}</body>
     </html>
   );

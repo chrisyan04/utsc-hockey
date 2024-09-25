@@ -19,6 +19,7 @@ import bcrypt from "bcryptjs";
 import Roster from "@/components/AdminSide/Roster";
 import { EyeFilledIcon } from "./EyeFilledIcon";
 import { EyeSlashFilledIcon } from "./EyeSlashFilledIcon";
+import AddPlayer from "@/components/AdminSide/AddPlayer";
 
 export default function Admin() {
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -109,10 +110,12 @@ export default function Admin() {
             </h2>
             <Divider />
             <div className="flex flex-col">
-              <h3 className="text-center text-3xl p-4 text-transparent bg-gradient-to-tr from-gray-400 to-red-700 bg-clip-text">
-                Modify Roster
-              </h3>
+                <h3 className="text-center text-3xl p-4 text-transparent bg-gradient-to-tr from-gray-400 to-red-700 bg-clip-text">
+                  Modify Roster
+                </h3>
               <Roster />
+              <Divider className="my-6" />
+              <AddPlayer />
             </div>
           </main>
         )}

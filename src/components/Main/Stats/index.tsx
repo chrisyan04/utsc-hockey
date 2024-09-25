@@ -10,12 +10,12 @@ import {
   Spinner,
 } from "@nextui-org/react";
 import { useAsyncList } from "@react-stately/data";
-import { players } from "@/data/players";
+import { stats } from "@/data/stats";
 
 export default function Roster() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-  const [roster, setRoster] = useState(players);
+  const [statistics, setStatistics] = useState(stats);
 
   useEffect(() => {
     const handleResize = () => {
@@ -48,33 +48,33 @@ export default function Roster() {
   //         items: [],
   //       };
   //     }
-    // },
+  // },
 
-    // async sort({ items, sortDescriptor }) {
-    //   return {
-    //     items: items.sort((a, b) => {
-    //       //@ts-ignore
-    //       let first = a[sortDescriptor.column];
-    //       //@ts-ignore
-    //       let second = b[sortDescriptor.column];
-    //       let cmp =
-    //         (parseInt(first) || first) < (parseInt(second) || second) ? -1 : 1;
+  // async sort({ items, sortDescriptor }) {
+  //   return {
+  //     items: items.sort((a, b) => {
+  //       //@ts-ignore
+  //       let first = a[sortDescriptor.column];
+  //       //@ts-ignore
+  //       let second = b[sortDescriptor.column];
+  //       let cmp =
+  //         (parseInt(first) || first) < (parseInt(second) || second) ? -1 : 1;
 
-    //       if (sortDescriptor.direction === "descending") {
-    //         cmp *= -1;
-    //       }
+  //       if (sortDescriptor.direction === "descending") {
+  //         cmp *= -1;
+  //       }
 
-    //       return cmp;
-    //     }),
-    //   };
-    // },
+  //       return cmp;
+  //     }),
+  //   };
+  // },
   // });
 
   const sortRoster = (sortDescriptor: {
     column: string;
     direction: string;
   }) => {
-    const sortedRoster = [...roster].sort((a, b) => {
+    const sortedRoster = [...statistics].sort((a, b) => {
       //@ts-ignore
       let first = a[sortDescriptor.column];
       //@ts-ignore
@@ -88,7 +88,7 @@ export default function Roster() {
 
       return cmp;
     });
-    setRoster(sortedRoster);
+    setStatistics(sortedRoster);
   };
 
   const columns = [
@@ -101,24 +101,24 @@ export default function Roster() {
     <TableColumn key="number" align="start">
       Number
     </TableColumn>,
-    <TableColumn key="dob" align="start">
-      DoB
+    <TableColumn key="gp" align="start">
+      GP
     </TableColumn>,
   ];
 
   if (!isSmallScreen) {
     columns.push(
-      <TableColumn key="shoots" align="start">
-        Shoots
+      <TableColumn key="g" align="start">
+        G
       </TableColumn>,
-      <TableColumn key="hometown" align="start">
-        Hometown
+      <TableColumn key="a" align="start">
+        A
       </TableColumn>,
-      <TableColumn key="height" align="start">
-        Height
+      <TableColumn key="p" align="start">
+        P
       </TableColumn>,
-      <TableColumn key="weight" align="start">
-        Weight
+      <TableColumn key="pim" align="start">
+        PIM
       </TableColumn>
     );
   }
@@ -130,7 +130,7 @@ export default function Roster() {
     <section>
       <div className="">
         <h2 className="text-4xl text-center font-bold pb-4 pt-8 text-[#640d14] dark:text-[#a24857]">
-          UTSC Men's Hockey Roster
+          UTSC Men's Hockey Statistics
         </h2>
         <p className="text-xl text-center pb-4 text-[#640d14] dark:text-[#a24857]">
           {currentYear} - {nextYear}
@@ -149,7 +149,7 @@ export default function Roster() {
       >
         <TableHeader>{columns}</TableHeader>
         <TableBody
-          items={roster}
+          items={statistics}
           // isLoading={isLoading}
           // loadingContent={<Spinner label="Loading..." color="default" />}
           emptyContent={"No rows to display."}

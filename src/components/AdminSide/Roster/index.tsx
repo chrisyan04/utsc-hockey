@@ -237,7 +237,8 @@ export default function Roster() {
               <ModalHeader className="flex gap-1">
                 Info of :
                 <span className="text-xl text-transparent bg-gradient-to-tr from-gray-400 to-red-700 bg-clip-text pl-8">
-                  {selectedRow?.name}&nbsp;{" #"}{selectedRow?.number}
+                  {selectedRow?.name}&nbsp;{" #"}
+                  {selectedRow?.number}
                 </span>
               </ModalHeader>
               <ModalBody>
@@ -248,36 +249,42 @@ export default function Roster() {
                       label="Position"
                       defaultValue={selectedRow.position}
                       onChange={(e) => setUpdatedPosition(e.target.value)}
+                      isClearable
                     />
                     <Input
                       type="text"
                       label="Date of Birth"
                       defaultValue={selectedRow.dob}
                       onChange={(e) => setUpdatedDob(e.target.value)}
+                      isClearable
                     />
                     <Input
                       type="text"
                       label="Shoots"
                       defaultValue={selectedRow.shoots}
                       onChange={(e) => setUpdatedShoots(e.target.value)}
+                      isClearable
                     />
                     <Input
                       type="text"
                       label="Hometown"
                       defaultValue={selectedRow.hometown}
                       onChange={(e) => setUpdatedHometown(e.target.value)}
+                      isClearable
                     />
                     <Input
                       type="text"
                       label="Height"
                       defaultValue={selectedRow.height}
                       onChange={(e) => setUpdatedHeight(e.target.value)}
+                      isClearable
                     />
                     <Input
                       type="text"
                       label="Weight"
                       defaultValue={selectedRow.weight}
                       onChange={(e) => setUpdatedWeight(e.target.value)}
+                      isClearable
                     />
                   </>
                 ) : (

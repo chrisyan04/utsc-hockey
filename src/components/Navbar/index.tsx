@@ -145,7 +145,7 @@ export default function Navbar() {
             <DarkModeToggle />
           </NavbarItem>
           <NavbarItem className="">
-            <Link href="https://www.chrisyan.ca/" target="_blank">
+            <Link href="https://www.instagram.com/the.schpa/" target="_blank">
               <Image
                 src={xIcon}
                 alt="X"
@@ -156,7 +156,7 @@ export default function Navbar() {
             </Link>
           </NavbarItem>
           <NavbarItem className="">
-            <Link href="https://www.chrisyan.ca/" target="_blank">
+            <Link href="https://www.instagram.com/the.schpa/" target="_blank">
               <Image
                 src={instaIcon}
                 alt="instagram"
@@ -167,7 +167,7 @@ export default function Navbar() {
             </Link>
           </NavbarItem>
           <NavbarItem className="">
-            <Link href="https://www.chrisyan.ca/" target="_blank">
+            <Link href="https://www.instagram.com/the.schpa/" target="_blank">
               <Image
                 src={fbIcon}
                 alt="facebook"

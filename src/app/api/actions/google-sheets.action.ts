@@ -1,16 +1,18 @@
 "use server";
 import { google } from "googleapis";
-import path from "path";
-
-const keyFilePath = path.resolve(
-  process.cwd(),
-  "src/app/api/actions/google-sheets-key.json"
-);
 
 export async function getSheetData() {
   try {
+    if (!process.env.GOOGLE_SERVICE_ACCOUNT_JSON) {
+      throw new Error("GOOGLE_SERVICE_ACCOUNT_JSON environment variable is not defined");
+    }
+
+    const credentials = JSON.parse(
+      Buffer.from(process.env.GOOGLE_SERVICE_ACCOUNT_JSON, "base64").toString("utf-8")
+    );
+
     const glAuth = await google.auth.getClient({
-      keyFile: keyFilePath,
+      credentials,
       scopes: ["https://www.googleapis.com/auth/spreadsheets"],
     });
 

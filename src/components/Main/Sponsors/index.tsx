@@ -1,5 +1,8 @@
+'use client'
+
 import { secureHeapUsed } from "crypto";
 import React from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
 import Slider from "react-slick";
@@ -11,6 +14,17 @@ import swift from "@/public/Sponsors/swift.svg";
 import Image from "next/image";
 
 export default function Sponsors() {
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    const updateWidth = () => setWindowWidth(window.innerWidth);
+
+    updateWidth();
+
+    window.addEventListener("resize", updateWidth);
+
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
   const sponsors = [havenBarbers, rosasPasta, swift, havenBarbers, rosasPasta, swift];
 
   const settings = {
@@ -62,7 +76,7 @@ export default function Sponsors() {
               <Image
                 src={logo}
                 alt={`Sponsor ${index + 1}`}
-                height={768 > window.innerWidth ? 100 : 200}
+                height={windowWidth < 768 ? 100 : 200}
                 objectFit="contain"
                 className={
                   logo === havenBarbers || logo === swift

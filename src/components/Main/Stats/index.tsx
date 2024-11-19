@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from "react";
 import {
   Table,
@@ -15,6 +17,22 @@ import { getSheetData } from "@/app/api/actions/google-sheets.action";
 export default function Roster() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        setIsSmallScreen(window.innerWidth < 980);
+      };
+
+      handleResize();
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, []);
+
   interface Player {
     name: string;
     position: string;
@@ -34,19 +52,6 @@ export default function Roster() {
   });
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 980);
-    };
-
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
     const fetchStatsData = async () => {
       setLoadingSheetData(true);
       try {
@@ -58,7 +63,7 @@ export default function Roster() {
           const players: Player[] = response.data
             .slice(1)
             .map((item: any[]) => {
-              // Reference data by header names instead of array indexes
+              
               const player: Player = {
                 name: item[headers.indexOf("name")],
                 position: item[headers.indexOf("position")],
@@ -111,7 +116,7 @@ export default function Roster() {
       </TableColumn>,
       <TableColumn key="number" align="start">
         Number
-      </TableColumn>,
+      </TableColumn>
     );
   }
 

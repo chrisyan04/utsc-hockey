@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from "react";
 import {
   Table,
@@ -36,12 +38,14 @@ export default function Roster() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 980);
+      if (typeof window !== "undefined") {
+        setIsSmallScreen(window.innerWidth < 980);
+      }
     };
 
     handleResize();
-
     window.addEventListener("resize", handleResize);
+
     return () => {
       window.removeEventListener("resize", handleResize);
     };

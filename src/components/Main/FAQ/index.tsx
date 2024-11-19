@@ -3,7 +3,7 @@ import {Accordion, AccordionItem} from "@nextui-org/react";
 
 export default function FAQ() {
   return (
-    <section className="mt-20">
+    <section className="mt-20 mb-12">
       <h2 className="text-4xl font-bold text-center my-10 text-[#640d14] dark:text-[#a24857]">
         Frequently Asked Questions
       </h2>

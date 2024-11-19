@@ -4,6 +4,7 @@ import * as React from "react";
 import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import Navbar from "@/components/Navbar";
+import ComingSoon from "@/components/ComingSoon";
 
 export default function Home() {
   return (
@@ -11,7 +12,7 @@ export default function Home() {
       <NextThemesProvider attribute="class" defaultTheme="light">
         <main className="bg-white dark:bg-black">
           <Navbar />
-          {"schedule"}
+          <ComingSoon />
         </main>
       </NextThemesProvider>
     </NextUIProvider>

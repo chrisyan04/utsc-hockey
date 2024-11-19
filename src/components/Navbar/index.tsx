@@ -20,6 +20,7 @@ import logo from "@/public/logo.webp";
 import DarkModeToggle from "./DarkMode";
 import xIcon from "@/public/Icons/x.svg";
 import instaIcon from "@/public/Icons/instagram.svg";
+import youtubeIcon from "@/public/Icons/youtube.svg";
 import fbIcon from "@/public/Icons/facebook.svg";
 
 export default function Navbar() {
@@ -145,7 +146,7 @@ export default function Navbar() {
             <DarkModeToggle />
           </NavbarItem>
           <NavbarItem className="">
-            <Link href="https://www.instagram.com/the.schpa/" target="_blank">
+            <Link href="/comingsoon" target="_blank">
               <Image
                 src={xIcon}
                 alt="X"
@@ -156,7 +157,10 @@ export default function Navbar() {
             </Link>
           </NavbarItem>
           <NavbarItem className="">
-            <Link href="https://www.instagram.com/the.schpa/" target="_blank">
+            <Link
+              href="https://www.instagram.com/utscmenstchockey/"
+              target="_blank"
+            >
               <Image
                 src={instaIcon}
                 alt="instagram"
@@ -167,12 +171,15 @@ export default function Navbar() {
             </Link>
           </NavbarItem>
           <NavbarItem className="">
-            <Link href="https://www.instagram.com/the.schpa/" target="_blank">
+            <Link
+              href="https://www.youtube.com/@UTSCMensTCHockey"
+              target="_blank"
+            >
               <Image
-                src={fbIcon}
-                alt="facebook"
-                height={30}
-                width={30}
+                src={youtubeIcon}
+                alt="youtube"
+                height={40}
+                width={40}
                 className="dark:invert"
               />
             </Link>

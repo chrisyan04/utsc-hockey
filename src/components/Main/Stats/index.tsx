@@ -10,12 +10,28 @@ import {
   Spinner,
 } from "@nextui-org/react";
 import { useAsyncList } from "@react-stately/data";
-import { stats } from "@/data/stats";
+import { getSheetData } from "@/app/api/actions/google-sheets.action";
 
 export default function Roster() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-  const [statistics, setStatistics] = useState(stats);
+  interface Player {
+    name: string;
+    position: string;
+    number: string;
+    gp: string;
+    g?: string;
+    a?: string;
+    p?: string;
+    pim?: string;
+  }
+
+  const [stats, setStats] = useState<Player[]>([]);
+  const [loadingSheetData, setLoadingSheetData] = useState(false);
+  const [sortDescriptor, setSortDescriptor] = useState({
+    column: "name",
+    direction: "ascending",
+  });
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,96 +46,72 @@ export default function Roster() {
     };
   }, []);
 
-  // let list = useAsyncList({
-  //   async load({ signal }) {
-  //     let res = await fetch("/api/players", {
-  //       signal,
-  //     });
-  //     let json = await res.json();
-  //     setIsLoading(false);
-
-  //     if (Array.isArray(json)) {
-  //       return {
-  //         items: json,
-  //       };
-  //     } else {
-  //       console.error("Expected an array for response, got", json);
-  //       return {
-  //         items: [],
-  //       };
-  //     }
-  // },
-
-  // async sort({ items, sortDescriptor }) {
-  //   return {
-  //     items: items.sort((a, b) => {
-  //       //@ts-ignore
-  //       let first = a[sortDescriptor.column];
-  //       //@ts-ignore
-  //       let second = b[sortDescriptor.column];
-  //       let cmp =
-  //         (parseInt(first) || first) < (parseInt(second) || second) ? -1 : 1;
-
-  //       if (sortDescriptor.direction === "descending") {
-  //         cmp *= -1;
-  //       }
-
-  //       return cmp;
-  //     }),
-  //   };
-  // },
-  // });
-
-  const sortRoster = (sortDescriptor: {
-    column: string;
-    direction: string;
-  }) => {
-    const sortedRoster = [...statistics].sort((a, b) => {
-      //@ts-ignore
-      let first = a[sortDescriptor.column];
-      //@ts-ignore
-      let second = b[sortDescriptor.column];
-      let cmp =
-        (parseInt(first) || first) < (parseInt(second) || second) ? -1 : 1;
-
-      if (sortDescriptor.direction === "descending") {
-        cmp *= -1;
+  useEffect(() => {
+    const fetchStatsData = async () => {
+      setLoadingSheetData(true);
+      try {
+        const response = await getSheetData();
+        if (response && response.data) {
+          const headers = response.data[0].map((header: string) =>
+            header.toLowerCase()
+          );
+          const players: Player[] = response.data
+            .slice(1)
+            .map((item: any[]) => {
+              // Reference data by header names instead of array indexes
+              const player: Player = {
+                name: item[headers.indexOf("name")],
+                position: item[headers.indexOf("position")],
+                number: item[headers.indexOf("number")],
+                gp: item[headers.indexOf("tgp")],
+                g: item[headers.indexOf("tg")],
+                a: item[headers.indexOf("ta")],
+                p: item[headers.indexOf("tp")],
+                pim: item[headers.indexOf("tpim")],
+              };
+              return player;
+            });
+          setStats(players);
+        } else {
+          console.error("No data returned from Google Sheets.");
+        }
+      } catch (error) {
+        console.error("Error fetching sheet data:", error);
       }
-
-      return cmp;
-    });
-    setStatistics(sortedRoster);
-  };
+      setLoadingSheetData(false);
+    };
+    fetchStatsData();
+  }, []);
 
   const columns = [
     <TableColumn key="name" align="start">
       Name
     </TableColumn>,
-    <TableColumn key="position" align="start">
-      Position
-    </TableColumn>,
-    <TableColumn key="number" align="start">
-      Number
-    </TableColumn>,
     <TableColumn key="gp" align="start">
       GP
+    </TableColumn>,
+    <TableColumn key="g" align="start">
+      G
+    </TableColumn>,
+    <TableColumn key="a" align="start">
+      A
+    </TableColumn>,
+    <TableColumn key="p" align="start">
+      P
     </TableColumn>,
   ];
 
   if (!isSmallScreen) {
     columns.push(
-      <TableColumn key="g" align="start">
-        G
-      </TableColumn>,
-      <TableColumn key="a" align="start">
-        A
-      </TableColumn>,
-      <TableColumn key="p" align="start">
-        P
-      </TableColumn>,
       <TableColumn key="pim" align="start">
         PIM
-      </TableColumn>
+      </TableColumn>,
+      <TableColumn key="position" align="start">
+        Position
+      </TableColumn>,
+      <TableColumn key="number" align="start">
+        Number
+      </TableColumn>,
     );
   }
 
@@ -127,10 +119,10 @@ export default function Roster() {
   const nextYear = currentYear + 1;
 
   return (
-    <section>
+    <section className="mb-12">
       <div className="">
         <h2 className="text-4xl text-center font-bold pb-4 pt-8 text-[#640d14] dark:text-[#a24857]">
-          UTSC Men's Hockey Statistics
+          UTSC Men's Hockey Stats
         </h2>
         <p className="text-xl text-center pb-4 text-[#640d14] dark:text-[#a24857]">
           {currentYear} - {nextYear}
@@ -144,12 +136,14 @@ export default function Roster() {
         isHeaderSticky
         selectionMode="single"
         defaultSelectedKeys={["1"]}
-        // sortDescriptor={{ column: "name", direction: "ascending" }}
-        // onSortChange={sortRoster}
+        sortDescriptor={{
+          column: "name",
+          direction: "ascending",
+        }}
       >
         <TableHeader>{columns}</TableHeader>
         <TableBody
-          items={statistics}
+          items={stats}
           // isLoading={isLoading}
           // loadingContent={<Spinner label="Loading..." color="default" />}
           emptyContent={"No rows to display."}

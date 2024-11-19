@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="flex items-center">
             <Image src={logo} alt="logo" height={50} />
             <div className="text-center md:text-left px-6">
-              <h1 className="text-xl font-bold">UTSC Men's Hockey</h1>
+              <h1 className="text-xl font-bold">UTSC Men&apos;s Hockey</h1>
               <p className="text-sm">
                 Proudly representing the University of Toronto Scarborough.
               </p>
@@ -27,7 +27,7 @@ export default function Footer() {
         <hr className="my-3 border-t-0.5 border-opacity-30" />
 
         <div className="text-center text-sm">
-          &copy; {currentYear} UTSC Men's Hockey. All rights reserved.
+          &copy; {currentYear} UTSC Men&apos;s Hockey. All rights reserved.
         </div>
       </div>
     </footer>

@@ -144,7 +144,7 @@ export default function Roster() {
     <section className="mb-12">
       <div className="">
         <h2 className="text-4xl text-center font-bold pb-4 pt-8 text-[#640d14] dark:text-[#a24857]">
-          UTSC Men's Hockey Roster
+          UTSC Men&apos;s Hockey Roster
         </h2>
         <p className="text-xl text-center pb-4 text-[#640d14] dark:text-[#a24857]">
           {currentYear} - {nextYear}

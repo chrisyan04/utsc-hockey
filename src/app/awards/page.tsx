@@ -6,6 +6,7 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 import Navbar from "@/components/Navbar";
 import Awards from "@/components/Main/Awards";
 import ComingSoon from "@/components/ComingSoon";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
           <Navbar />
           <ComingSoon />
           {/* <Awards /> */}
+          <Footer />
         </main>
       </NextThemesProvider>
     </NextUIProvider>

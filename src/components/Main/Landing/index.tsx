@@ -24,7 +24,7 @@ export default function Landing() {
       {/* Overlay Content */}
       <div className="relative text-center z-10 px-4">
         <h1 className="text-6xl text-gray-300 dark:text-white font-bold drop-shadow-[0_0_20px_rgba(0,0,0,0.7)] mb-24 text-shadow-xl">
-          UTSC Men's Ice Hockey
+          UTSC Men&apos;s Ice Hockey
         </h1>
         <h2 className="brotherhood text-4xl text-[#a03b4c] dark:text-[#a24857] drop-shadow-[0_0_20px_rgba(0,0,0,0.7)] mt-4 text-shadow-lg">
           {"'Brotherhood of Champions'"}

@@ -9,11 +9,11 @@ export default function FAQ() {
       </h2>
       <Accordion variant="shadow">
         <AccordionItem key="1" aria-label="Who are we?" title="Who are we?">
-          We are the tri-campus (Div 1) intramural men's ice hockey team at the
-          University of Toronto Scarborough. We compete in the UofT Intramural
-          League against other UofT campuses. We are a competitive team that
-          plays for the love of the game and the amazing community around it. We
-          are not affiliated with the Varsity Blues hockey team.
+          We are the tri-campus (Div 1) intramural men&apos;s ice hockey team at
+          the University of Toronto Scarborough. We compete in the UofT
+          Intramural League against other UofT campuses. We are a competitive
+          team that plays for the love of the game and the amazing community
+          around it. We are not affiliated with the Varsity Blues hockey team.
         </AccordionItem>
         <AccordionItem
           key="2"

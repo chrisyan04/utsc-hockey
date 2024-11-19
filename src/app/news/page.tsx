@@ -6,6 +6,7 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 import Navbar from "@/components/Navbar";
 import Updates from "@/components/Main/Updates";
 import FAQ from "@/components/Main/FAQ";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
           <Navbar />
           <Updates />
           <FAQ />
+          <Footer />
         </main>
       </NextThemesProvider>
     </NextUIProvider>

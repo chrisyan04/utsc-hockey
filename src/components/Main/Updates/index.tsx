@@ -20,8 +20,8 @@ export default function App() {
         </h2>
       </div>
       <p className="text-center">
-        Find the lates about UTSC's men's ice hockey team with the following
-        links:
+        Find the lates about UTSC&apos;s men&apos;s ice hockey team with the
+        following links:
       </p>
       <div className="grid grid-cols-3 mx-10 my-8 gap-8 max-sm:grid-cols-1">
         <Card>

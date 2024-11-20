@@ -6,6 +6,9 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  Card,
+  CardHeader,
+  CardBody,
 } from "@nextui-org/react";
 import { getSheetData } from "@/app/api/actions/google-sheets.action";
 
@@ -22,6 +25,7 @@ interface Player {
 
 export default function TopPlayers() {
   const [players, setPlayers] = useState<Player[]>([]);
+
 
   useEffect(() => {
     const fetchStatsData = async () => {
@@ -72,22 +76,62 @@ export default function TopPlayers() {
       <h2 className="text-4xl text-center font-bold pb-4 pt-8 text-[#640d14] dark:text-[#a24857]">
         Top 5 Performers
       </h2>
-      <Table aria-label="Top 5 Players" classNames={{ table: "min-h-[200px]" }}>
-        <TableHeader>
-          <TableColumn>Name</TableColumn>
-          <TableColumn>Position</TableColumn>
-          <TableColumn>Points</TableColumn>
-        </TableHeader>
-        <TableBody items={top5Players}>
-          {(item: any) => (
-            <TableRow key={item.number}>
-              <TableCell>{item.name}</TableCell>
-              <TableCell>{item.position}</TableCell>
-              <TableCell>{item.totalPoints}</TableCell>
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
+      <div className="flex flex-wrap items-center justify-center lg:flex-nowrap">
+        <div className="w-full lg:w-2/3">
+          <Table
+            aria-label="Top 5 Players"
+            classNames={{ table: "min-h-[200px]" }}
+          >
+            <TableHeader>
+              <TableColumn>Rank</TableColumn>
+              <TableColumn>Name</TableColumn>
+              <TableColumn>Position</TableColumn>
+              <TableColumn>Points</TableColumn>
+            </TableHeader>
+            <TableBody
+              items={top5Players.map((player, index) => ({
+                ...player,
+                rank: index + 1,
+              }))}
+            >
+              {(item: any) => (
+                <TableRow key={item.number}>
+                  <TableCell>{item.rank}</TableCell>
+                  <TableCell>{item.name}</TableCell>
+                  <TableCell>{item.position}</TableCell>
+                  <TableCell>{item.totalPoints}</TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </div>
+
+        <div className="w-full lg:w-1/3 flex flex-col gap-4 mt-8 lg:mt-0 lg:pl-8">
+          <Card>
+            <CardHeader>
+              <h4 className="text-xl font-bold text-[#640d14] dark:text-[#a24857]">
+                Team Game Record
+              </h4>
+            </CardHeader>
+            <CardBody>
+              <p className="text-center text-3xl font-bold">{"2 - 1 - 1"}</p>
+            </CardBody>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <h4 className="text-xl font-bold text-[#640d14] dark:text-[#a24857]">
+                Latest MVP
+              </h4>
+            </CardHeader>
+            <CardBody>
+              <p className="text-center text-xl font-bold">
+                {"Dan Jimenez 🏆"}
+              </p>
+            </CardBody>
+          </Card>
+        </div>
+      </div>
     </section>
   );
 }

@@ -6,7 +6,7 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 import Landing from "@/components/Main/Landing";
 import Navbar from "@/components/Navbar";
 import Sponsors from "@/components/Main/Sponsors";
-import TopPlayers from "@/components/TopPlayers";
+import TopPlayers from "@/components/Main/TopPlayers";
 import Footer from "@/components/Footer";
 
 export default function Home() {

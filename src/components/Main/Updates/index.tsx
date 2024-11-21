@@ -29,7 +29,12 @@ export default function App() {
             <h4 className="text-center font-bold">Instagram</h4>
           </CardHeader>
           <CardBody>
-            <Image src={instaPP} alt="Instagram" width={300} height={300} />
+            <Image
+              src={instaPP}
+              alt="Instagram"
+              width={500}
+              height={500}
+            />
           </CardBody>
           <CardFooter>
             <Link
@@ -40,12 +45,18 @@ export default function App() {
             </Link>
           </CardFooter>
         </Card>
+
         <Card>
           <CardHeader>
             <h4 className="text-center font-bold">Youtube</h4>
           </CardHeader>
           <CardBody>
-            <Image src={ytPP} alt="Facebook" width={300} height={300} />
+            <Image
+              src={ytPP}
+              alt="Facebook"
+              width={500}
+              height={500}
+            />
           </CardBody>
           <CardFooter>
             <Link
@@ -61,7 +72,12 @@ export default function App() {
             <h4>Movember</h4>
           </CardHeader>
           <CardBody>
-            <Image src={movPP} alt="Twitter" width={300} height={300} />
+            <Image
+              src={movPP}
+              alt="Twitter"
+              width={500}
+              height={500}
+            />
           </CardBody>
           <CardFooter>
             <Link

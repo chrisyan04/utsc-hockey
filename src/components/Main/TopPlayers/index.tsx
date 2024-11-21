@@ -126,7 +126,7 @@ export default function TopPlayers() {
             </CardHeader>
             <CardBody>
               <p className="text-center text-xl font-bold">
-                {"Dan Jimenez 🏆"}
+                {"Caleb Respicio-Jun 🏆"}
               </p>
             </CardBody>
           </Card>
